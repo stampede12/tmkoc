@@ -1,0 +1,1526 @@
+11/7/22, 1:11 PM Assignment_1.ipynb - Colaboratory
+
+import pandas as pd
+
+df=pd.read_csv(r"C:\Users\rohan\OneDrive\Desktop\Python Datasets\Heart.csv")
+
+df .head()
+Unnamed® Age Sex ChestPain RestBP Chol Fbs RestECG MaxHR ExAng
+0 1 63 1 typical 145 233 1
+1 2 67 1 asymptomatic 160 286 0
+2 3 «67 1 asymptomatic 120 229 0
+3 4 37 1 nonanginal 130 250 0
+
+#shape of data set
+df.shape
+
+(303, 15)
+
+#finding missing values
+df.isnull().sum()
+
+Unnamed: @
+Age
+
+Sex
+ChestPain
+RestBP
+Chol
+
+Fbs
+RestECG
+MaxHR
+ExAng
+Oldpeak
+Slope
+
+Ca
+
+Thal
+
+AHD
+
+dtype: int64
+
+OmMFPOOGOOAMDAGDSPOPOSPDPIASOS &
+
+#data type of each column
+
+df.dtypes
+Unnamed: @ int64
+Age int64
+Sex int64
+
+https://colab.research.google.com/drive/1aaTXLiIGMUuTyVvNxA6YDbOam8RzxXbzY#printMode=true
+
+2
+2
+2
+0
+
+150
+108
+129
+187
+
+Oldpeak
+
+2.3
+1.5
+2.6
+3.5
+
+1/4
+11/7/22, 1:11 PM Assignment_1.ipynb - Colaboratory
+
+ChestPain object
+RestBP int64
+Chol int64
+Fbs int64
+RestECG int64
+MaxHR int64
+ExAng int64
+Oldpeak float64
+Slope int64
+ca float64
+Thal object
+AHD object
+
+dtype: object
+
+#finding out zero's
+df[df==@].count()
+
+Unnamed: @ e
+Age 0
+sex 97
+ChestPain e
+RestBP Q
+Chol e
+Fbs 258
+RestECG 151
+MaxHR e
+ExAng 204
+Oldpeak 99
+Slope @
+Ca 176
+Thal Q
+AHD Q
+
+dtype: int64
+
+#finding out mean age of patients
+df['Age' ].mean()
+
+54.43894389438944
+
+#extracting only Age, Sex, ChestPain, RestBP, Chol columns
+newdf = df[['Age', ‘Sex', 'ChestPain', ‘'RestBP', ‘Chol']]
+newdf.head()
+
+https://colab.research.google.com/drive/1aaTXLIGMUuTyVvNxA6YDbOam8RzxXbzY#printMode=true 2/4
+11/7/22, 1:11 PM Assignment_1.ipynb - Colaboratory
+
+Age Sex ChestPain RestBP Chol
+
+#Randomly dividing dataset in training (75%) and testing (25%)
+from sklearn.model_selection import train_test_split
+
+train, test = train_test_split(df, random_state = @, test_size = @.25)
+
+2 67 1 asymptomatic 120 229
+
+train.shape
+
+(227, 15)
+
+test.shape
+
+(76, 15)
+
+https://colab.research.google.com/drive/1aaTXLIGMUuTyVvNxA6YDbOam8RzxXbzY#printMode=true
+
+3/4
+11/7/22, 1:12 PM
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+Assignment_2.ipynb - Colaboratory
+
+df = pd.read_csv(r"C:\Users\rohan\OneDrive\Desktop\Python Datasets\temperatures.csv")
+
+df.head()
+
+YEAR
+
+0 1901
+1 1902
+2 1903
+3 1904
+
+JAN
+
+22.40
+24.93
+23.44
+22.50
+
+FEB
+
+24.14
+26.58
+25.03
+24.73
+
+MAR
+
+29.07
+29.77
+27.83
+28.21
+
+APR
+
+31.91
+31.78
+31.39
+32.02
+
+MAY
+
+33.41
+33.73
+32.91
+32.64
+
+*
+I
+
+df["YEAR'] #input data
+
+JUN
+
+33.18
+32.91
+33.00
+32.07
+
+JUL
+
+31.21
+30.92
+31.34
+30.36
+
+ 
+
+ 
+
+ 
+
+ 
+
+AUG
+
+30.39
+30.73
+29.98
+30.09
+
+y = df['JUN'] #output data
+plt.title("Temperature variation in India")
+plt.xlabel('Year')
+plt.ylabel('Average June Temperature’ )
+plt.scatter(x, y)
+<matplotlib.collections.PathCollection at @x2deb@939580>
+Temperature variation in India
+34.54 .
+vO) . e 4
+wu « ee
+% 35 | oe 7 * . °
+a o* 6 o% tte . *
+530; °° ~ * . ve wf .
+ze * ee *  & @* #40 ®
+5354 % es & ~, et } e *
+wu * * . é
+on om ps 8 . ° *.
+Zxyo, * . *
+ou * *
+a s* .
+31.5 | e * *
+31.04 T T ° T T T T
+1900 1920 1940 1960 1980 2000 2020
+‘ar
+x. shape
+(117, )
+X = X.values
+
+https://colab.research.google.com/drive/1Lo4j_ubeYujJrng1dKhzFHRUw9SM7v96¥printMode=true
+
+SEP
+
+30.47
+29.80
+29.85
+30.04
+
+OcT
+
+29.97
+29.12
+29.04
+29.20
+
+NOV
+
+27.31
+26.31
+26.08
+26.36
+
+DEC
+
+24.49
+24.04
+23.65
+23.63
+
+13
+11/7/22, 1:12 PM Assignment_2.ipynb - Colaboratory
+
+X = x.reshape(117, 1)
+
+from sklearn.linear_model import LinearRegression
+
+regressor = LinearRegression()
+
+regressor.fit(x, y)
+
+LinearRegression()
+
+# Performing the prediction for unseen data
+regressor. predict([[2030]])
+
+array([33.26706749] )
+
+predicted_values = regressor.predict(x)
+
+# Mean Absolute Error
+from sklearn.metrics import mean_absolute_error
+mean_absolute_error(y, predicted_values)
+
+@.48168799010531976
+
+# Mean Squared Error
+from sklearn.metrics import mean_squared_error
+mean_squared_error(y, predicted_values)
+
+@.3424789478589651
+
+# R-Square metrics
+from sklearn.metrics import r2_score
+r2_score(y, predicted_values)
+
+@.1382651229137435
+
+# Visualizing simple regression model
+
+plt.title("Temperature variation in India")
+
+plt.xlabel('Year')
+
+plt.ylabel('Average June Temperature’ )
+
+plt.scatter(x, y, label='Actual Values', color = 'r', marker='.')
+plt.plot(x, predicted_values, label='Predicted Values’, color = 'g')
+plt.legend()
+
+https://colab.research.google.com/drive/1Lo4j_ubeYujJrng1dKhzFHRUw9SM7v96¥printMode=true 2/3
+11/7/22, 1:12 PM Assignment_2.ipynb - Colaboratory
+
+<matplotlib.legend.Legend at @x2debf4728b@>
+Temperature variation in India
+
+ 
+
+M57 4 Actual Values .
+Predicted Values. .
+
+ 
+
+34.0 5
+
+33.5 4
+
+33.0 4
+
+32.5 4
+
+32.0 5
+
+Average June Temperature
+
+ 
+
+31.5 4 7 . .
+
+ 
+
+ 
+
+31.0 4
+
+ 
+
+7 T 7 T T T T
+1900 1920 1540 1960 1980 2000 2020
+
+Colab paid products - Cancel contracts here
+
+https://colab.research.google.com/drive/1Lo4j_ubeYujJrng1dKhzFHRUw9SM7v96¥printMode=true 3/3
+11/7/22, 1:13 PM
+
+import pandas as pd
+import seaborn as sns
+
+Assignment_3.ipynb - Colaboratory
+
+df=pd.read_csv(r"C:\Users\rohan\OneDrive\Desktop\Python Datasets\Admission_Predict.csv")
+
+df.head()
+Serial GRE
+No. Score
+0 1 337
+1 2 324
+2 3 316
+3 4 322
+4 5 314
+df.shape
+(400, 9)
+df.isnull().sum()
+Serial No. Q
+GRE Score Q
+TOEFL Score @
+University Rating e
+SOP e
+LOR Q
+CGPA Q
+Research Q
+Chance of Admit e
+
+dtype: int64
+
+TOEFL
+Score
+
+118
+107
+104
+110
+103
+
+University
+Rating
+
+4
+
+no ©o oo Ff
+
+from sklearn.preprocessing import Binarizer
+
+bi = Binarizer(threshold=@.75)
+
+SOP
+
+45
+4.0
+3.0
+3.5
+2.0
+
+LOR
+
+4.5
+4.5
+3.5
+2.5
+3.0
+
+CGPA Research
+
+9.65 1
+8.87 1
+8.00 1
+8.67 1
+8.21 0
+
+df['Chance of Admit '] = bi.fit_transform(df[['Chance of Admit ']])
+
+df .head()
+
+https://colab.research.google.com/drive/1C Ve0AjMIx4kyEvIBO5Xc-LKFb2N2ezze#printMode=true
+
+Chance of
+Admit
+
+0.92
+0.76
+0.72
+0.80
+0.65
+
+1/4
+11/7/22, 1:13 PM Assignment_3.ipynb - Colaboratory
+
+Serial GRE TOEFL University
+
+x = df.drop('Chance of Admit ', axis=1)
+y = df['Chance of Admit ']
+x.head()
+
+Serial No. GRE Score TOEFL Score University Rating
+
+0 1 337 118
+1 2 324 107
+2 3 316 104
+3 4 322 110
+4 5 314 103
+
+y.astype('int')
+
+@ 1
+1 1
+2 Q
+3 1
+4 @
+395 1
+396 1
+397 1
+398 Q
+399 1
+
+Name: Chance of Admit , Length: 400, dtype: int32
+
+sns.countplot(x=y)
+
+<AxesSubplot:xlabel="Chance of Admit ', ylabel="count'>
+
+ 
+
+count
+
+ 
+
+ 
+
+ 
+
+Chance of Admit
+
+from sklearn.model_selection import train_test_split
+https://colab.research.google.com/drive/1C Ve0AjMIx4kyEvIBO5Xc-LKFb2N2ezze#printMode=true
+
+4
+
+no wo 6 -
+
+SOP
+45
+4.0
+3.0
+3.5
+2.0
+
+LOR
+45
+45
+3.5
+2.5
+3.0
+
+Chance of
+
+CGPA Research
+
+9.65 1
+8.87 1
+8.00 1
+8.67 1
+8.21 0
+
+2/4
+11/7/22, 1:13 PM Assignment_3.ipynb - Colaboratory
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=0, train_size=@.75)
+
+from sklearn.tree import DecisionTreeClassifier
+classifier = DecisionTreeClassifier(random_state=@)
+classifier. fit(x_train, y_train)
+
+DecisionTreeClassifier(random_state=0)
+
+y_pred = classifier.predict(x_test)
+
+result = pd.DataFrame({
+“actual" : y_test,
+“predicted' : y_pred
+})
+
+from sklearn.metrics import ConfusionMatrixDisplay, accuracy_score
+from sklearn.metrics import classification_report
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+
+<sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 9x1a4243effde>
+
+50
+
+Tue label
+
+ 
+
+0.0 10
+Predicted label
+
+accuracy_score(y_test, y_pred)
+
+Q.9
+
+print(classification_report(y_test, y_pred))
+
+precision recall fi-score support
+
+6.8 6.92 8.92 Q.92 59
+
+1.0 @.88 8.88 0.88 41
+accuracy 8.90 100
+macro avg 8.90 8.908 8.90 100
+
+https://colab.research.google.com/drive/1C Ve0AjMIx4kyEvIBO5Xc-LKFb2N2ezze#printMode=true 3/4
+11/7/22, 1:13 PM Assignment_3.ipynb - Colaboratory
+weighted avg @.98 8.98 @.98 100
+
+Colab paid products - Cancel contracts here
+
+https://colab.research.google.com/drive/1C Ve0AjMIx4kyEvIBO5Xc-LKFb2N2ezze#printMode=true 4/4
+11/7/22, 12:31 PM Untitled0.ipynb - Colaboratory
+
+import numpy as np
+
+import pandas as pd
+
+4%matplotlib inline
+
+import matplotlib.pyplot as plt
+
+from matplotlib.lines import Line2D
+
+import seaborn as sns
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+from sklearn.cluster import KMeans
+
+from google.colab import drive
+drive.mount('/content/gdrive' )
+
+Drive already mounted at /content/gdrive; to attempt to forcibly remount, call drive.mou.
+
+>
+
+cust = pd.read_csv("gdrive/My Drive/Mall_Customers.csv")
+cust.head()
+C CustomerID Genre Age Annual Income (k$) Spending Score (1-100) oO
+
+0 1 Male 19 15 39
+
+1 2 Male 21 15 81
+
+2 3 Female 20 16 6
+
+3 4 Female 23 16 77
+
+4 5 Female 31 17 40
+cust.shape
+
+(200, 5)
+cust.isnull().sum()
+
+CustomerID Q
+
+Genre Q
+
+Age @
+
+Annual Income (k$) Q
+
+Spending Score (1-100) Q
+
+dtype: int64
+
+cust.rename(columns = {"Genre":"Gender"}, inplace = True)
+cust.drop(labels = "CustomerID', axis = 1, inplace = True)
+
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=JywTSOES4evC&printMode=true 1/5
+11/7/22, 12:31 PM Untitled0.ipynb - Colaboratory
+
+cust["Gender"].replace({"Male":1, "Female":0@}, inplace = True)
+
+sns.heatmap(data = cust.corr(), annot = True, fmt = ".2f", cmap = "“cividis r")
+font = {"family":"Sherif", "size":16}
+
+10
+Gender 08
+06
+Age
+o4
+Annual Income (k$) 02
+oo
+Spending Score (1-100) 02
+
+ 
+
+Gender
+Age
+Annual Income (k3)
+
+Spending Score (1-100)
+
+plt.subplots_adjust(left = 1, bottom = 1,right = 2.5, top = 2, wspace = @.5, hspace = None)
+plt.subplot(1,2,1)
+
+plt.pie(x = [len(cust[cust.Gender == 1]) , len(cust[cust.Gender == @])] , labels = ['Male' ,
+plt.title("Customers gender", fontdict = font)
+
+plt.subplot(1,2,2)
+
+male_avg_score = cust[cust.Gender == 1]['Spending Score (1-100)'].mean()
+
+female_avg_ score = cust[cust.Gender == @]['Spending Score (1-10@)'].mean()
+
+plt.bar(x = ['Male' , 'Female'] , height = [male_avg score , female_avg_ score]
+
+» color = ['tab:cyan" , ‘'tab:green'])
+
+plt.title('Customers spending score’ , fontdict = font)
+
+plt.ylabel('Average spending score’ , fontdict = font)
+
+plt.xlabel('Gender' , fontdict = font)
+
+plt.text(-0.3 , 40 , ‘Average = {:.2f}'.format(male_avg_score))
+
+plt.text(@.7 , 40 , ‘Average = {:.2f}'.format(female_avg score))
+
+plt.show()
+
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=JywTSOES4evC&printMode=true 2/5
+11/7/22, 12:31 PM Untitled0.ipynb - Colaboratory
+
+Customers spending score
+
+ 
+
+Customers gender
+
+   
+
+Female
+
+Average spending score
+
+ 
+
+ 
+
+ 
+
+age_list = cust.Age.unique()
+age_list.sort()
+avg_list = []
+for age in age list:
+avg_list.append(cust[cust.Age == age]['Spending Score (1-100)'].mean())
+plt.plot(age_list,avg_list)
+plt.xlabel('Age' , fontdict = font)
+plt.ylabel('Average spending score’ , fontdict = {'family':'serif' , 'size':14
+})
+plt.title('Spending score in different ages‘)
+
+plt.plot([20,70] , [40,40] , linestyle = '--' , c = 'tab:green' , alpha = @.8)
+plt.plot([35,35] , [10,90] , linestyle = '--' , c = 'tab:red' , alpha = @.8)
+plt.text(31,7, ‘Age = 35')
+
+plt.show()
+
+Spending score in different ages
+
+ 
+
+s
+
+  
+   
+
+  
+
+3
+
+&
+
+Average spending score
+8
+
+ 
+
+ 
+
+ 
+
+kmeans = KMeans(n_clusters = 4 , init = 'k-means++' , random_state = 1)
+kmeans.fit(data_pca)
+
+cluster_id = kmeans.predict(data_pca)
+raciult data = nd NataFramal/ \
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=JywTSOES4evC&printMode=true 3/5
+11/7/22, 12:31 PM Untitled0.ipynb - Colaboratory
+
+i Gouse_uaea — puswacar:amey,
+result_data['PC1'] = data_pca[:,0]
+
+result_data['PC2'] = data_pca[:,1]
+
+result_data['ClusterID'] = cluster_id
+
+cluster_colors = {@:'tab:red' , 1:'tab:green’ , 2:'tab:blue’ , 3:'tab:pink'}
+
+cluster_dict = {'Centroid':'tab:orange', 'Cluster@':'tab:red' , "Cluster1':'tab:green', ‘Clust
+plt.scatter(x = result_data['PC1'] , y = result_data['PC2'] , c = result_data[
+
+*ClusterID' ].map(cluster_colors))
+
+handles = [Line2D([@], [@], marker='0', color='w', markerfacecolor=v, label=k,
+
+markersize=8) for k, v in cluster_dict.items()]
+
+plt.legend(title='color', handles=handles, bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.scatter(x = kmeans.cluster_centers_[:,@] , y = kmeans.cluster_centers_[:,1
+
+] », marker = 'o' , c = 'tab:orange', s = 15@ , alpha = 1)
+plt.title("Clustered by KMeans" , fontdict = font)
+plt.xlabel("PC1" , fontdict = font)
+
+plt.ylabel("PC2" , fontdict = font)
+
+plt.show()
+
+Clustered by KMeans
+
+ 
+
+ 
+
+ 
+
+ 
+
+34 * color
+o ° .
+® Centroid
+® = Custerd
+. *
+2 = + ® = Clusterl
+* s * ® Custer2
+= . -
+14 . a of. eo é ® Custer3
+* *.
+O “A oe afte “arRree ©
+0 eben 2 8 gee
+ete = “3
+S ggg ot:
+ss © 7.
+-1 e. * a8 os eo ee
+* # «6 . ®e ?. ‘
+-? % * ove
+T T T T T T
+2 -1 0 1 Z 3
+
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=JywTSOES4evC&printMode=true 4/5
+11/7/22, 1:10 PM Untitled0.ipynb - Colaboratory
+
+import pandas as pd
+
+import csv
+
+from mlxtend.preprocessing import TransactionEncoder
+
+from mlxtend.frequent_patterns import apriori, association_rules
+
+dataset = []
+with open('Market_Basket_Optimisation.csv') as file:
+reader = csv.reader(file, delimiter=",')
+for row in reader:
+dataset += [row]
+
+dataset[@:10]
+
+Cc L[['shrimp',
+
+"almonds",
+
+"avocado',
+
+"vegetables mix’,
+
+"green grapes’,
+
+‘whole weat flour’,
+
+"yams’,
+
+"cottage cheese’,
+
+"energy drink’,
+
+"tomato juice’,
+
+"low fat yogurt’,
+
+"green tea',
+
+"honey',
+
+"salad',
+
+"mineral water’,
+
+"salmon',
+
+"antioxydant juice’,
+
+"frozen smoothie’,
+
+"spinach',
+
+‘olive oil'],
+['burgers', ‘meatballs’, ‘eggs'],
+[‘chutney'],
+
+[‘'turkey', ‘avocado'],
+
+[‘mineral water’, 'milk', ‘energy bar’, ‘whole wheat rice’, ‘green tea'],
+['low fat yogurt'],
+
+['whole wheat pasta’, ‘french fries'],
+['soup', ‘light cream', 'shallot'],
+['frozen vegetables’, ‘spaghetti’, ‘green tea’],
+['french fries']]
+
+len(dataset)
+
+7501
+
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=92KxtTcRz3lv&printMode=true 1/3
+11/7/22, 1:10 PM
+
+te = TransactionEncoder()
+x= te.fit_transform(dataset)
+
+Xx
+
+array([[False,
+
+[False,
+[False,
+sees
+
+[False,
+[False,
+[False,
+
+True,
+False,
+False,
+
+False,
+False,
+False,
+
+True, ..
+False, ...
+False, ...
+
+False, ...
+False, ...
+False, ...
+
+°2
+
+Untitled0.ipynb - Colaboratory
+
+True,
+False,
+False,
+
+False,
+False,
+False,
+
+df = pd.DataFrame(x, columns=te.columns_)
+
+#1. frequent itemsets
+
+freq_itemset = apriori(df, min_support=@.@1, use_colnames=True)
+
+freq_itemset
+
+pr» © DN
+
+252
+253
+254
+255
+256
+
+support
+0.020397
+0.033329
+0.010799
+0.014265
+0.011465
+
+0.011065
+0.017064
+0.015731
+0.010265
+0.011465
+
+False,
+False,
+False,
+
+False,
+False,
+True,
+
+itemsets
+
+(almonds)
+
+(avocado)
+
+(barbecue sauce)
+
+(black tea)
+
+(body spray)
+
+(milk, ground beef, mineral water)
+
+(spaghetti, ground beef, mineral water)
+
+(spaghetti, milk, mineral water)
+
+(spaghetti, olive oil, mineral water)
+
+(pancakes, spaghetti, mineral water)
+
+257 rows * 2 columns
+
+#Find the rules
+
+rules = association_rules(freq_itemset, metric='confidence', min_threshold=@.25)
+rules = rules[['antecedents', ‘consequents', ‘support’, 'confidence' ]]
+
+rules.head()
+
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=92KxtTcRz3lv&printMode=true
+
+False],
+False],
+False],
+
+False],
+
+False],
+False]])
+
+Z
++
+
+2/3
+11/7/22, 1:10 PM
+
+antecedents
+0 (avocado)
+1 (burgers)
+2 (burgers)
+
+consequents
+(mineral water)
+(eggs)
+
+(french fries)
+
+Fame med oe eh
+
+Untitled0.ipynb - Colaboratory
+
+support confidence
+0.011598 0.348000
+0.028796 0.330275
+
+0.021997 0.252294
+
+nnnanns nan7nAaAF
+
+rules[rules[ ‘antecedents’ ]=={'cake'}]['consequents' ]
+
+4 (mineral water)
+Name: consequents, dtype: object
+
+https://colab.research.google.com/drive/1x9uc-OzTeKsgiVFPwrk_4rNzPMhhivRW#scrollTo=92KxtTcRz3lv&printMode=true
+
+Colab paid products - Cancel contracts here
+
+Y Os
+
+completed at 1:09 PM
+
+om
+‘s
+
+3/3
+11/7/22, 1:14 PM Assignment_6.ipynb - Colaboratory
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv(r"C: \Users\rohan\OneDrive\Desktop\Python Datasets\pima-indians-diabetes.csv"
+df.head()
+6 148 72 35 @ 33.6 0.627 50 1
+0 1 85 66 29 0 266 0.351 31 0
+1 8 183 64 0O 0 23.3 0.672 32 1
+21 89 66 23 94 281 0.167 21 0
+3 0 137 40 35 168 43.1 2.288 33 1
+45 116 74 0O 0 256 0.201 30 0
+
+x
+ll
+
+df.iloc[:,:8]
+df.iloc[:,8]
+
+<
+Ul
+
++ Code + Text
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+#create model
+model = Sequential()
+model.add(Dense(12, input_dim=8, activation='relu'))
+
+#hidden layers
+model.add(Dense(8, activation='relu'))
+model.add(Dense(8, activation='relu'))
+
+#output layer
+model.add(Dense(1, activation='sigmoid'))
+
+#compile model
+model.compile(loss='binary_crossentropy', optimizer='adam',
+metrics=['accuracy'])
+
+#train model
+model.fit(x, y, epochs = 100, batch_size=10)
+
+https://colab.research.google.com/drive/1TS0XL43-z_19kv7yamBvxlqZaN4hyAO5#printMode=true 1/4
+11/7/22, 1:14 PM
+
+Epoch 1/100
+77/77 [Saseseemssssesessssesesssscses
+Epoch 2/180
+77/77 [Ssssssssssssssssssssssssssss==
+Epoch 3/1¢e
+77/77 [Ssesssesssssssssssssssssss====
+Epoch 4/1e0
+77/77 [Sasessesssnessmcssesssnesssoss
+Epoch 5/100
+77/77 [Ssssssesssssssssssssssssss====
+Epoch 6/100
+77/77 [Ssssssesssssscssssssscsssssscs
+Epoch 7/100
+77/77 [Sasessesssnessmcssesssnesssoss
+Epoch 8/100
+77/77 [Ssssssesssssssssssssssssss====
+Epoch 9/100
+77/77 [Saesssesssssssssssssessssssec=
+Epoch 10/100
+77/77 [Sasssssssssssssssssssssssss2s=
+Epoch 11/100
+77/77 [sssssssssssssssssssssssssssss=
+Epoch 12/10e
+77/77 [Saesssesssssssssssssessssssec=
+Epoch 13/100
+77/77 [Sasssssssssssssssssssssssss2s=
+Epoch 14/160
+77/77 [Ssssssesssssssssssssssssss====
+Epoch 15/100
+77/77 [Ssssssssssssssssssssssssssss==
+Epoch 16/100
+77/77 [ssssssssssssssssssssssssssss==
+Epoch 17/100
+77/77 [Ssssssesssssssssssssssssss====
+Epoch 18/100
+77/77 [Sassssssssssssssssssssssssss==
+Epoch 19/10@
+77/77 [Ssesssesssssscsscssssssssssccs
+Epoch 20/100
+77/77 [Ssssssesssssscssssssscsssssscs
+Epoch 21/100
+77/77 [Ssssssssssssssssssssssssssss==
+Epoch 22/100
+77/77 [Sasessesssnessmcssesssnesssoss
+Epoch 23/160
+77/77 [Sassssssssssssssssssssssssss==
+Epoch 24/100
+77/77 [Ssssssssssssssssssssssssssss==
+Epoch 25/100
+77/77 [Ssssssesssssscssssssscsssssscs
+Epoch 26/100
+77/77 [Sassssssssssssssssssssssssss==
+Epoch 27/100
+77/77 [Ssssssesssssssssssssssssss====
+Epoch 28/10
+77/77 [Saseseemssssesessssesesssscses
+
+is
+
+Qs
+
+Qs
+
+@s
+
+@s
+
+@s
+
+Qs
+
+Qs
+
+@s
+
+Qs
+
+@s
+
+Qs
+
+@s
+
+Qs
+
+Qs
+
+Qs
+
+@s
+
+@s
+
+@s
+
+Qs
+
+Qs
+
+Qs
+
+@s
+
+Qs
+
+@s
+
+Os
+
+@s
+
+@s
+
+1ims/step
+ims/step
+ims/step
+ims/step
+1ims/step
+ims/step
+ims/step
+ims/step
+ims/step
+ims/step
+ims/step
+1ms/step
+ims/step
+ims/step
+1ims/step
+ims/step
+1ims/step
+ims/step
+ims/step
+1ims/step
+ims/step
+ims/step
+2ms/step
+1ms/step
+ims/step
+ims/step
+ims/step
+
+ims/step
+
+https://colab.research.google.com/drive/1TS0XL43-z_19kv7yamBvxlqZaN4hyAO5#printMode=true
+
+Assignment_6.ipynb - Colaboratory
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+loss:
+
+3.6775
+
+0.9684
+
+6.8022
+
+8.76190
+
+0.7086
+
+@.66590
+
+@.6642
+
+@.6600
+
+8.6835
+
+@.6275
+
+0.6416
+
+8.7130
+
+@.6222
+
+8.6081
+
+0.5889
+
+8.5949
+
+@.6329
+
+@.5820
+
+8.5829
+
+@.5822
+
+@.6269
+
+8.5659
+
+@.5715
+
+@.6128
+
+@.5899
+
+@.5763
+
+@.5665
+
+@.5881
+
+accuracy:
+
+accuracy.
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy.
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy.
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+accuracy:
+
+0.64
+
+@.65
+
+Q.67
+
+0.64
+
+@.6¢
+
+@.65
+
+@.64
+
+@.6¢
+
+@.7€
+
+@.6¢
+
+@.6¢
+
+@.71
+
+Q.7€
+
+@.7€
+
+@.67
+
+@.73
+
+Q.72
+
+Q.6&
+
+@.7€
+
+@.71
+
+Q.71
+
+2/4
+11/7/22, 1:14 PM Assignment_6.ipynb - Colaboratory
+Epoch 29/100
+
+ 
+
+ 
+
+77/77 [sssssssssscsssssssssssssss====] - Qs ims/step - loss: 9.5756 - accuracy: 0.71 ~
+#evaluate
+model.evaluate(x,y)
+24/24 [===s===s=ss=s=ssss=ss=sss===========] - @s 1ms/step - loss: 0.4629 - accuracy: @.7771
+[@.46289893984794617, @.7770534753799438 ]
+model. summary ()
+Model: "sequential"
+Layer (type) Output Shape Param #
+dense (Dense) (None, 12) 108
+dense_1 (Dense) (None, 8) 104
+dense_2 (Dense) (None, 8) 72
+dense_3 (Dense) (None, 1) 9
+Total params: 293
+Trainable params: 293
+Non-trainable params: @
+https://colab.research.google.com/drive/1TS0XL43-z_19kv7yamBvxlqZaN4hyAO5#printMode=true
+
+3/4
+
